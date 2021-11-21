@@ -9,8 +9,6 @@ jobs:
   build-docker:
      name: "Build image and push"
      runs-on: ubuntu-20.04
-     env:
-       SHA: ${GITHUB_SHA::8}
 
      steps:
      - name: Checkout
@@ -20,7 +18,7 @@ jobs:
        name: Build & push Docker image
        with:
          image: mpetrovic992/time-app
-         tags: ${GITHUB_SHA::8}, latest
+         tags: ${{ GITHUB_SHA }}, latest
          registry: docker.io
          dockerfile: Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
