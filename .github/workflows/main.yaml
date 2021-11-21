@@ -18,7 +18,7 @@ jobs:
        name: Build & push Docker image
        with:
          image: mpetrovic992/time-app
-         tags:  ci-${{ github.sha }} , latest
+         tags:  ${{ github.ref_name }} , latest
          registry: docker.io
          dockerfile: Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
