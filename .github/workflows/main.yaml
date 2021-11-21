@@ -1,0 +1,27 @@
+name: "Main Workflow"
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  build-docker:
+     name: "Build image and push"
+     runs-on: ubuntu-20.04
+     env:
+       SHA: ${GITHUB_SHA::8}
+
+     steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+
+     - uses: mr-smithers-excellent/docker-build-push@v5
+       name: Build & push Docker image
+       with:
+         image: mpetrovic992/time-app
+         tags: ${GITHUB_SHA::8}, latest
+         registry: registry-url.io
+         dockerfile: Dockerfile
+         username: ${{ secrets.DOCKER_USERNAME }}
+         password: ${{ secrets.DOCKER_PASSWORD }}
