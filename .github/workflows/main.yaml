@@ -1,8 +1,8 @@
 name: "Main Workflow"
 on:
   push:
-    branches:
-      - master
+    tags:
+      - "v*"
 
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
        name: Build & push Docker image
        with:
          image: mpetrovic992/time-app
-         tags:  ${{ github.sha }} , latest
+         tags:  ci-${{ github.sha }} , latest
          registry: docker.io
          dockerfile: Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
