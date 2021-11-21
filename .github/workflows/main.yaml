@@ -21,7 +21,7 @@ jobs:
        with:
          image: mpetrovic992/time-app
          tags: ${GITHUB_SHA::8}, latest
-         registry: registry-url.io
+         registry: docker.io
          dockerfile: Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}
