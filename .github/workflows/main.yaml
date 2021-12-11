@@ -3,8 +3,8 @@ on:
   push:
     tags:
       - "v*"
-  branch:
-     - master
+    branch:
+      - master
 
 jobs:
   build-docker:
